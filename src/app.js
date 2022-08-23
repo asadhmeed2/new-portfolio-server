@@ -1,5 +1,5 @@
 const express = require('express');
-const { itWorks } = require('./middleware/appMiddleware');
+const { itWorks } = require('./middleware/middleware');
 const routs = express.Router();
 
 
