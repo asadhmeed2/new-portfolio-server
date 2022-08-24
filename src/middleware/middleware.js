@@ -3,7 +3,6 @@ const itWorks =(req, res, next) => {
     res.status(200).send({
         message: 'inWorks'
     })
-    next();
 }
 
 const errors = (req, res, next,text,statusNumber) => {
