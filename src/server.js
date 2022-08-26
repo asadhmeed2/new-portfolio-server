@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const routs = require('./app');
 const resumeRoutes = require('./api/resume');
 
@@ -17,9 +18,9 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-// mongoose.connect(process.env.MONGODB_CONNECTION,()=>{
-    //     console.log("connecting to MongoDB");
-    //   })
+mongoose.connect(process.env.MONGODB_CONNECTION,()=>{
+        console.log("connecting to MongoDB");
+      })
     
     
     app.use('/',routs);//for testing purposes
