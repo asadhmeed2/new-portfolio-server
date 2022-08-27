@@ -4,7 +4,7 @@ const resumeRoutes = express.Router();
 
 
 resumeRoutes.post('/resume', upload.single('resume'), function (req, res, next) {
-    // req.file is the `avatar` file
+    // req.file is the `resume` file
     // req.body will hold the text fields, if there were any
   })
 
