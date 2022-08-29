@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const routs = require('./app');
-const resumeRoutes = require('./api/resume');
+const resumeRoutes = require('./api/routes/resume');
 
 
 const { errors } = require('./middleware/middleware');
