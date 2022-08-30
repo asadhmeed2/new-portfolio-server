@@ -6,6 +6,7 @@ const resumeRoutes = require('./api/routes/resume');
 
 
 const { errors } = require('./middleware/middleware');
+const imageRoutes = require('./api/routes/image');
 
 
 require('dotenv').config();
@@ -23,6 +24,8 @@ app.use(cors());
 app.use('/',routs);//for testing purposes
 
 app.use('/resume', resumeRoutes)
+
+app.use('/projectImages', imageRoutes)
     
 app.use((req, res, next) => errors(req, res, next,"Not found",404));
     
