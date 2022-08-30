@@ -12,7 +12,8 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter =(req, file, cb) =>{
-    if(true){
+    if(file.mimetype ==='application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.mimetype ==='application/pdf'){
+        console.log(file.mimetype);
         cb(null,true);
     }else{
         cb(null,false);
@@ -25,7 +26,7 @@ const upload = multer({storage: storage, limits:{
 });
 
 
-resumeRoutes.post('/resume', upload.single('resume'), function (req, res, next) {
+resumeRoutes.post('/', upload.single('resume'), function (req, res, next) {
     // req.file is the `resume` file
     // req.body will hold the text fields, if there were any
   })
