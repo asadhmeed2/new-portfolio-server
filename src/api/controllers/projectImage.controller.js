@@ -38,3 +38,21 @@ exports.getImageById = async (req, res, next) =>{
         });
     }
 }
+exports.uploadImage = async (req, res, next) =>{
+    try{
+        const result = await productModel.save(id);
+        if(result){
+            res.status(200).json(result);
+        }else {
+            res.status(404).json({
+                message: "404 not found"
+            })
+        }
+    }
+   catch(err){
+        console.error(err.message);
+        res.status(500).json({
+            error: err
+        });
+    }
+}
