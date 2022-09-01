@@ -22,7 +22,7 @@ exports.getImageById = async (req, res, next) =>{
     const id = req.params.productId;
     console.log(id);
     try{
-        const result = await productModel.findById(id);
+        const result = await projectImageModel.findById(id);
         if(result){
             res.status(200).json(result);
         }else {
@@ -40,12 +40,17 @@ exports.getImageById = async (req, res, next) =>{
 }
 exports.uploadImage = async (req, res, next) =>{
     try{
-        const result = await productModel.save(id);
+        console.log(req.file);
+        const result = await projectImageModel.create({
+            _id: new mongoose.Types.ObjectId(),
+            name: req.body.name,
+            projectImage: req.file.path
+        })
+        console.log(result);
         if(result){
-            res.status(200).json(result);
-        }else {
-            res.status(404).json({
-                message: "404 not found"
+            return res.status(200).json({
+                message:"adding an Image",
+                createdImage:product
             })
         }
     }

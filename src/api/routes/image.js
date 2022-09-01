@@ -2,6 +2,7 @@ const express = require('express');
 const imageRoutes = express.Router();
 const multer = require('multer');
 const path = require('path');
+const { uploadImage } = require('../controllers/projectImage.controller');
 
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
@@ -27,12 +28,7 @@ const upload = multer({storage: storage, limits:{
 });
 
 
-  imageRoutes.post('/', upload.single('projectImage'), function (req, res, next) {
-    // req.file is the `avatar` file
-    // req.body will hold the text fields, if there were any
-    res.status(200).json({message:'successfully uploaded the image'})
-
-  })
+  imageRoutes.post('/', upload.single('projectImage'), uploadImage)
 
 imageRoutes.get('/', (req, res) => {
     res.status(200).json({message: 'get resume'});
