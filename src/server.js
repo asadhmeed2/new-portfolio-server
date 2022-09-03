@@ -19,7 +19,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.use('/uploads',express.static('uploads'));
+app.use('/uploads/images',express.static('src/api/uploads/images'));
 
 app.use('/',routs);//for testing purposes
 
@@ -37,7 +37,11 @@ app.use((req, res, next) => errors(req, res, next,"Not found",404));
         })
     })
     
-mongoose.connect(process.env.MONGODB_CONNECTION,()=>{
+mongoose.connect(process.env.MONGODB_CONNECTION_DEV,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,   }
+    ,()=>{
     console.log("connecting to MongoDB");
 })
 app.listen(port,()=>{

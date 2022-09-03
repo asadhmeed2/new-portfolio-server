@@ -40,13 +40,14 @@ exports.getImageById = async (req, res, next) =>{
 }
 exports.uploadImage = async (req, res, next) =>{
     try{
-        console.log(req.file);
-        const result = await projectImageModel.create({
+        const image = new projectImageModel({
             _id: new mongoose.Types.ObjectId(),
             name: req.body.name,
             projectImage: req.file.path
         })
-        console.log(result);
+        console.log(req.file);
+        const result = await image.save();
+        
         if(result){
             return res.status(200).json({
                 message:"adding an Image",
