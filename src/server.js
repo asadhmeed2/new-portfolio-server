@@ -37,10 +37,7 @@ app.use((req, res, next) => errors(req, res, next,"Not found",404));
         })
     })
     
-mongoose.connect(process.env.MONGODB_CONNECTION_DEV,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,   }
+mongoose.connect(process.env.MONGODB_CONNECTION,{ useNewUrlParser: true, useUnifiedTopology: true }
     ,()=>{
     console.log("connecting to MongoDB");
 })
