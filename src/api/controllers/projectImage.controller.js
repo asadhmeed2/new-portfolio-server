@@ -40,7 +40,7 @@ exports.getImageById = async (req, res, next) =>{
 }
 exports.uploadImage = async (req, res, next) =>{
     try{
-        console.log(req.file.path);
+        console.log(req.file);
         const result = await projectImageModel.create({
             _id: new mongoose.Types.ObjectId(),
             name: req.body.name,
